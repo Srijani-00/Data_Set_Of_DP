@@ -16,8 +16,7 @@ label_map = {
 
 st.set_page_config(page_title="Diabetes Prediction System", layout="centered")
 st.title("Diabetes Prediction System")
-st.markdown("This system helps you in predicting your diabetes status base on lifestyle Factors.
-             Provide the following health and lifestyle details to predict your diabetes status.")
+st.markdown("Provide the following health and lifestyle details to predict your diabetes status.")
 
 # Feature inputs (21)
 def get_user_input():
