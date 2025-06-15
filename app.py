@@ -41,13 +41,57 @@ def get_user_input():
         GenHlth = st.slider("General Health (1=Excellent, 5=Poor)", 1, 5, 3)
 
     with col3:
-        MentHlth = st.slider("Days of poor Mental Health (Days)", 0, 30, 5)
-        PhysHlth = st.slider("Days of poor Physical Health (Days)", 0, 30, 5)
-        DiffWalk = st.selectbox("Difficulty in Walking/Climbing", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        MentHlth = st.slider("Poor Mental Health Days (last 30)", 0, 30, 5)
+        PhysHlth = st.slider("Poor Physical Health Days (last 30)", 0, 30, 5)
+        DiffWalk = st.selectbox("Difficulty Walking", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         Sex = st.selectbox("Gender", [0, 1], format_func=lambda x: "Female" if x == 0 else "Male")
-        Age = st.selectbox("Age Category (9=18-24 to 13=80+)", list(range(1, 14)), index=8)
-        Education = st.selectbox("Education (1 to 6)", list(range(1, 7)), index=3)
-        Income = st.selectbox("Income Level (1 to 8)", list(range(1, 9)), index=4)
+
+        # Age mapping
+        age_categories = {
+            1: "18 to 24", 2: "25 to 29", 3: "30 to 34", 4: "35 to 39",
+            5: "40 to 44", 6: "45 to 49", 7: "50 to 54", 8: "55 to 59",
+            9: "60 to 64", 10: "65 to 69", 11: "70 to 74", 12: "75 to 79", 13: "80 or older"
+        }
+        Age = st.selectbox(
+            "Age Category (1 to 13)", 
+            options=list(age_categories.keys()), 
+            format_func=lambda x: f"{x}: {age_categories[x]}",
+            index=8
+        )
+
+        # Education mapping
+        education_categories = {
+            1: "None or Only Kindergarten",
+            2: "Grades 1 through 8",
+            3: "Grades 9 through 11",
+            4: "Grade 12 or GED",
+            5: "College 1 to 3 years",
+            6: "College 4+ years (Graduate)"
+        }
+        Education = st.selectbox(
+            "Education Level (1 to 6)",
+            options=list(education_categories.keys()),
+            format_func=lambda x: f"{x}: {education_categories[x]}",
+            index=3
+        )
+
+        # Income mapping
+        income_categories = {
+            1: "< $10K",
+            2: "$10K – <$15K",
+            3: "$15K – <$20K",
+            4: "$20K – <$25K",
+            5: "$25K – <$35K",
+            6: "$35K – <$50K",
+            7: "$50K – <$75K",
+            8: "$75K or more"
+        }
+        Income = st.selectbox(
+            "Income Level (1 to 8)",
+            options=list(income_categories.keys()),
+            format_func=lambda x: f"{x}: {income_categories[x]}",
+            index=4
+        )
 
     input_data = pd.DataFrame([[
         HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, HeartDiseaseorAttack,
