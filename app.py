@@ -23,31 +23,31 @@ def get_user_input():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        HighBP = st.selectbox("High Blood Pressure", [0: No, 1: Yes])
-        HighChol = st.selectbox("High Cholesterol", [0: No, 1: Yes])
-        CholCheck = st.selectbox("Cholesterol Check in last 5 years", [0: No, 1: Yes])
+        HighBP = st.selectbox("High Blood Pressure", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        HighChol = st.selectbox("High Cholesterol", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        CholCheck = st.selectbox("Cholesterol Check in last 5 years", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         BMI = st.number_input("Body Mass Index", 10, 100, 25)
-        Smoker = st.selectbox("Smoked at least 100 cigarettes in lifetime", [0: No, 1: Yes])
-        Stroke = st.selectbox("Ever had a stroke", [0: No, 1: Yes])
-        HeartDiseaseorAttack = st.selectbox("Ever had Heart Disease or Attack", [0: No, 1: Yes])
+        Smoker = st.selectbox("Smoked at least 100 cigarettes in lifetime", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        Stroke = st.selectbox("Ever had a stroke", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        HeartDiseaseorAttack = st.selectbox("Ever had Heart Disease or Attack", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
 
     with col2:
-        PhysActivity = st.selectbox("Physical Activity", [0: No, 1: Yes])
-        Fruits = st.selectbox("Consume Fruits Daily", [0: No, 1: Yes])
-        Veggies = st.selectbox("Consume Vegetables Daily", [0, 1])
-        HvyAlcoholConsump = st.selectbox("Heavy Alcohol Consumption", [0, 1])
-        AnyHealthcare = st.selectbox("Have Healthcare Access", [0, 1])
-        NoDocbcCost = st.selectbox("Couldn't see Doctor due to cost in last 1 year", [0, 1])
+        PhysActivity = st.selectbox("Physical Activity", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        Fruits = st.selectbox("Consume Fruits Daily", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        Veggies = st.selectbox("Consume Vegetables Daily", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        HvyAlcoholConsump = st.selectbox("Heavy Alcohol Consumption", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        AnyHealthcare = st.selectbox("Have Healthcare Access", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        NoDocbcCost = st.selectbox("Couldn't see Doctor due to cost in last 1 year", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         GenHlth = st.slider("General Health (1=Excellent, 5=Poor)", 1, 5, 3)
 
     with col3:
         MentHlth = st.slider("Days of poor Mental Health (Days)", 0, 30, 5)
         PhysHlth = st.slider("Days of poor Physical Health (Days)", 0, 30, 5)
-        DiffWalk = st.selectbox("Difficulty in Walking/Climbing", [0, 1])
-        Sex = st.selectbox("Gender", [0: Female, 1: Male])
-        Age = st.selectbox("Age Category (9=18-24 to 13=80+)", 1, 13, 9)
-        Education = st.selectbox("Education (1 to 6)", 1, 6, 4)
-        Income = st.selectbox("Income Level (1 to 8)", 1, 8, 5)
+        DiffWalk = st.selectbox("Difficulty in Walking/Climbing", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        Sex = st.selectbox("Gender", [0, 1], format_func=lambda x: "Female" if x == 0 else "Male")
+        Age = st.selectbox("Age Category (9=18-24 to 13=80+)", list(range(1, 14)), index=8)
+        Education = st.selectbox("Education (1 to 6)", list(range(1, 7)), index=3)
+        Income = st.selectbox("Income Level (1 to 8)", list(range(1, 9)), index=4)
 
     input_data = pd.DataFrame([[
         HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, HeartDiseaseorAttack,
@@ -71,21 +71,21 @@ if st.button("🔍 Predict Diabetes Risk"):
 
     label = label_map[prediction]
 
-    st.subheader("🧾 Prediction Result")
+    st.subheader("🧮 Prediction Result")
     st.write(f"**The person is likely: `{label}`**")
 
     if prediction == 1:
-        st.markdown(f"🟡 *Prediabetic detected. Risk of becoming diabetic: `{probabilities[2]*100:.2f}%`*")
+        st.markdown(f"💡 *Prediabetic detected. Risk of becoming diabetic: `{probabilities[2]*100:.2f}%`*")
 
     # Probability breakdown
-    st.markdown("---")
-    st.markdown("### 🔬 Prediction Probabilities")
-    st.markdown(f"""
-    - Non-Diabetic: **{probabilities[0]*100:.2f}%**  
-    - Prediabetic: **{probabilities[1]*100:.2f}%**  
-    - Diabetic: **{probabilities[2]*100:.2f}%**
-    """)
-    
-    st.markdown("### 🛠️ Raw Debug Output")
-    st.code(f"Raw probability array: {np.round(probabilities.reshape(1, -1), 5)}", language="python")
+    #st.markdown("---")
+    #st.markdown("### 🔢 Prediction Probabilities")
+    #st.markdown(f"""
+    #- Non-Diabetic: **{probabilities[0]*100:.2f}%**  
+    #- Prediabetic: **{probabilities[1]*100:.2f}%**  
+    #- Diabetic: **{probabilities[2]*100:.2f}%**
+    #""")
 
+    #st.markdown("### 🧪 Raw Debug Output")
+    #st.code(f"Raw probability array: {np.round(probabilities.reshape(1, -1), 5)}", language="python")
+    
