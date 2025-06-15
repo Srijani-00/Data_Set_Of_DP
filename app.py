@@ -48,9 +48,9 @@ def get_user_input():
 
         # Age mapping
         age_categories = {
-            1: " 18 to 24", 2: " 25 to 29", 3: " 30 to 34", 4: " 35 to 39",
-            5: " 40 to 44", 6: " 45 to 49", 7: " 50 to 54", 8: " 55 to 59",
-            9: " 60 to 64", 10: " 65 to 69", 11: " 70 to 74", 12: " 75 to 79", 13: " 80 or older"
+            1: "Age 18 to 24", 2: "Age 25 to 29", 3: "Age 30 to 34", 4: "Age 35 to 39",
+            5: "Age 40 to 44", 6: "Age 45 to 49", 7: "Age 50 to 54", 8: "Age 55 to 59",
+            9: "Age 60 to 64", 10: "Age 65 to 69", 11: "Age 70 to 74", 12: "Age 75 to 79", 13: "Age 80 or older"
         }
         Age = st.selectbox(
             "Select Age Category (1 to 13)", 
