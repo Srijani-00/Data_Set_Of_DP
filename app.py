@@ -32,11 +32,11 @@ def get_user_input():
         HeartDiseaseorAttack = st.selectbox("Ever had Heart Disease or Attack", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
 
     with col2:
-        PhysActivity = st.selectbox("Physical Activity", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        PhysActivity = st.selectbox("Physical activity in past 30 days", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         Fruits = st.selectbox("Consume Fruits Daily", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         Veggies = st.selectbox("Consume Vegetables Daily", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         HvyAlcoholConsump = st.selectbox("Heavy Alcohol Consumption", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
-        AnyHealthcare = st.selectbox("Have Healthcare Access", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
+        AnyHealthcare = st.selectbox("Have Health Coverage", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         NoDocbcCost = st.selectbox("Couldn't see Doctor due to cost in last 1 year", [0, 1], format_func=lambda x: "No" if x == 0 else "Yes")
         GenHlth = st.slider("General Health (1=Excellent, 5=Poor)", 1, 5, 3)
 
