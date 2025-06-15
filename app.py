@@ -14,40 +14,41 @@ label_map = {
     2: "Diabetic"
 }
 
-st.set_page_config(page_title="Diabetes Risk Predictor", layout="centered")
-st.title("🧪 Diabetes Risk Predictor (3-Class)")
-st.markdown("Provide the following health and lifestyle details to predict your diabetes status.")
+st.set_page_config(page_title="Diabetes Prediction System", layout="centered")
+st.title("Diabetes Prediction System")
+st.markdown("This system helps you in predicting your diabetes status base on lifestyle Factors.
+             Provide the following health and lifestyle details to predict your diabetes status.")
 
 # Feature inputs (21)
 def get_user_input():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        HighBP = st.selectbox("High Blood Pressure", [0, 1])
-        HighChol = st.selectbox("High Cholesterol", [0, 1])
-        CholCheck = st.selectbox("Cholesterol Check in last 5 years", [0, 1])
+        HighBP = st.selectbox("High Blood Pressure", [0: No, 1: Yes])
+        HighChol = st.selectbox("High Cholesterol", [0: No, 1: Yes])
+        CholCheck = st.selectbox("Cholesterol Check in last 5 years", [0: No, 1: Yes])
         BMI = st.number_input("Body Mass Index", 10, 100, 25)
-        Smoker = st.selectbox("Smoker", [0, 1])
-        Stroke = st.selectbox("Stroke", [0, 1])
-        HeartDiseaseorAttack = st.selectbox("Heart Disease or Attack", [0, 1])
+        Smoker = st.selectbox("Smoked at least 100 cigarettes in lifetime", [0: No, 1: Yes])
+        Stroke = st.selectbox("Ever had a stroke", [0: No, 1: Yes])
+        HeartDiseaseorAttack = st.selectbox("Ever had Heart Disease or Attack", [0: No, 1: Yes])
 
     with col2:
-        PhysActivity = st.selectbox("Physical Activity", [0, 1])
-        Fruits = st.selectbox("Fruits Intake", [0, 1])
-        Veggies = st.selectbox("Vegetables Intake", [0, 1])
+        PhysActivity = st.selectbox("Physical Activity", [0: No, 1: Yes])
+        Fruits = st.selectbox("Consume Fruits Daily", [0: No, 1: Yes])
+        Veggies = st.selectbox("Consume Vegetables Daily", [0, 1])
         HvyAlcoholConsump = st.selectbox("Heavy Alcohol Consumption", [0, 1])
         AnyHealthcare = st.selectbox("Have Healthcare Access", [0, 1])
-        NoDocbcCost = st.selectbox("No Doctor due to Cost", [0, 1])
+        NoDocbcCost = st.selectbox("Couldn't see Doctor due to cost in last 1 year", [0, 1])
         GenHlth = st.slider("General Health (1=Excellent, 5=Poor)", 1, 5, 3)
 
     with col3:
-        MentHlth = st.slider("Mental Health (Days)", 0, 30, 5)
-        PhysHlth = st.slider("Physical Health (Days)", 0, 30, 5)
-        DiffWalk = st.selectbox("Difficulty Walking", [0, 1])
-        Sex = st.selectbox("Sex (0=Female, 1=Male)", [0, 1])
-        Age = st.slider("Age Category (9=18-24 to 13=80+)", 1, 13, 9)
-        Education = st.slider("Education (1 to 6)", 1, 6, 4)
-        Income = st.slider("Income Level (1 to 8)", 1, 8, 5)
+        MentHlth = st.slider("Days of poor Mental Health (Days)", 0, 30, 5)
+        PhysHlth = st.slider("Days of poor Physical Health (Days)", 0, 30, 5)
+        DiffWalk = st.selectbox("Difficulty in Walking/Climbing", [0, 1])
+        Sex = st.selectbox("Gender", [0: Female, 1: Male])
+        Age = st.selectbox("Age Category (9=18-24 to 13=80+)", 1, 13, 9)
+        Education = st.selectbox("Education (1 to 6)", 1, 6, 4)
+        Income = st.selectbox("Income Level (1 to 8)", 1, 8, 5)
 
     input_data = pd.DataFrame([[
         HighBP, HighChol, CholCheck, BMI, Smoker, Stroke, HeartDiseaseorAttack,
