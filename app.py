@@ -48,9 +48,9 @@ def get_user_input():
 
         # Age mapping
         age_categories = {
-            1: "18 to 24", 2: "25 to 29", 3: "30 to 34", 4: "35 to 39",
-            5: "40 to 44", 6: "45 to 49", 7: "50 to 54", 8: "55 to 59",
-            9: "60 to 64", 10: "65 to 69", 11: "70 to 74", 12: "75 to 79", 13: "80 or older"
+            1: " 18 to 24", 2: " 25 to 29", 3: " 30 to 34", 4: " 35 to 39",
+            5: " 40 to 44", 6: " 45 to 49", 7: " 50 to 54", 8: " 55 to 59",
+            9: " 60 to 64", 10: " 65 to 69", 11: " 70 to 74", 12: " 75 to 79", 13: " 80 or older"
         }
         Age = st.selectbox(
             "Select Age Category (1 to 13)", 
@@ -77,14 +77,14 @@ def get_user_input():
 
         # Income mapping
         income_categories = {
-            1: "< $10K",
-            2: "$10K – <$15K",
-            3: "$15K – <$20K",
-            4: "$20K – <$25K",
-            5: "$25K – <$35K",
-            6: "$35K – <$50K",
-            7: "$50K – <$75K",
-            8: "$75K or more"
+            1: " < $10K",
+            2: " $10K – <$15K",
+            3: " $15K – <$20K",
+            4: " $20K – <$25K",
+            5: " $25K – <$35K",
+            6: " $35K – <$50K",
+            7: " $50K – <$75K",
+            8: " $75K or more"
         }
         Income = st.selectbox(
             "Select Income Level (1 to 8)",
