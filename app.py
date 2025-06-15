@@ -53,7 +53,7 @@ def get_user_input():
             9: "60 to 64", 10: "65 to 69", 11: "70 to 74", 12: "75 to 79", 13: "80 or older"
         }
         Age = st.selectbox(
-            "Age Category (1 to 13)", 
+            "Select Age Category (1 to 13)", 
             options=list(age_categories.keys()), 
             format_func=lambda x: f"{x}: {age_categories[x]}",
             index=8
@@ -64,12 +64,12 @@ def get_user_input():
             1: "None or Only Kindergarten",
             2: "Grades 1 through 8",
             3: "Grades 9 through 11",
-            4: "Grade 12 or GED",
+            4: "Grade 12",
             5: "College 1 to 3 years",
             6: "College 4+ years (Graduate)"
         }
         Education = st.selectbox(
-            "Education Level (1 to 6)",
+            "Select Education Level (1 to 6)",
             options=list(education_categories.keys()),
             format_func=lambda x: f"{x}: {education_categories[x]}",
             index=3
@@ -87,7 +87,7 @@ def get_user_input():
             8: "$75K or more"
         }
         Income = st.selectbox(
-            "Income Level (1 to 8)",
+            "Select Income Level (1 to 8)",
             options=list(income_categories.keys()),
             format_func=lambda x: f"{x}: {income_categories[x]}",
             index=4
